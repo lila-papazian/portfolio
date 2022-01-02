@@ -13,6 +13,9 @@ const theme = createTheme({
     error: {
       main: red.A400,
     },
+    text: {
+      primary: '#003f5c'
+    }
   },
   padding: 0,
 });
