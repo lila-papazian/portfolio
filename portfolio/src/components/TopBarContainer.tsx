@@ -5,12 +5,12 @@ import { Stack } from '@mui/material';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-export default function HeroSection() {
+export default function TopBarContainer() {
 
     const pages = ['Home', 'Projects', 'Experience', 'Articles'];
 
     return (
-        <Box sx={{ width: '100%', paddingTop: "2.5rem", paddingBottom: "2.5rem", paddingLeft: "1rem", paddingRight: "1rem" }}>
+        <Box sx={{ width: '90%', paddingTop: "2.5rem", paddingBottom: "2.5rem", margin: "auto" }}>
             <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
                 <Stack>
                     <Typography variant="overline" component="h1" fontWeight="bold" fontSize="1.25rem" lineHeight="1.75rem">Lila Papazian</Typography>
