@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { Stack } from '@mui/material';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Icon, Link, Stack } from '@mui/material';
+import LinkedInIcon from './../../public/linkedin.svg';
+import TwitterIcon from './../../public/twitter.svg'
 
 export default function TopBarContainer() {
 
@@ -21,9 +21,13 @@ export default function TopBarContainer() {
                         <Typography variant="overline" textAlign="center" component="p" key={index}>{page}</Typography>
                     ))}
                 </Stack>
-                <Stack direction="row" spacing={2}>
-                    <TwitterIcon htmlColor="#003f5c" fontSize="large" />
-                    <LinkedInIcon htmlColor="#003f5c" fontSize="large" />
+                <Stack direction="row" spacing={3}>
+                    <Link href="https://twitter.com/lilapapazian">
+                        <TwitterIcon aria-label="twitter" />
+                    </Link>
+                    <Link href="https://ar.linkedin.com/in/lila-papazian">
+                        <LinkedInIcon aria-label="linkedin" />
+                    </Link>
                     {/* TODO: dark/light theme toggle */}
                 </Stack>
             </Stack>
@@ -32,9 +36,6 @@ export default function TopBarContainer() {
                     <Typography variant="overline" textAlign="center" key={index} component="p">{page}</Typography>
                 ))}
             </Stack>
-
         </Box>
-
-
     );
 }
