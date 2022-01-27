@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { Icon, Link, Stack } from '@mui/material';
+import { Link, Stack } from '@mui/material';
 import LinkedInIcon from './../../public/linkedin.svg';
 import TwitterIcon from './../../public/twitter.svg'
 

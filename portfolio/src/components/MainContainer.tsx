@@ -8,7 +8,8 @@ import NodeIcon from "../../public/nodejs.svg";
 import ReactIcon from "../../public/react.svg";
 import Button from '@mui/material/Button';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-export default function TopBarContainer() {
+
+export default function MainContainer() {
     return (
         <>
             <Box sx={{ width: "90%", margin: 'auto', paddingBottom: '1.5rem' }}>

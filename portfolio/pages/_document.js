@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
+import FooterContainer from "../src/components/FooterContainer.tsx";
 
 export default class MyDocument extends Document {
   render() {
@@ -18,13 +19,11 @@ export default class MyDocument extends Document {
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
         </Head>
-        <body>
+        <body style={{height: '100vh'}}>
           <Main />
           <NextScript />
         </body>
-        <footer>
-
-        </footer>
+        <FooterContainer />
       </Html>
     );
   }
