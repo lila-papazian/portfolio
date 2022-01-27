@@ -7,7 +7,7 @@ import TwitterIcon from './../../public/twitter.svg'
 
 export default function TopBarContainer() {
 
-    const pages = ['Home', 'Projects', 'Experience', 'Articles'];
+    const pages = ['Projects', 'Experience', 'Articles'];
 
     return (
         <Box sx={{ width: '90%', paddingTop: "2.5rem", paddingBottom: "2.5rem", margin: "auto" }}>
@@ -16,7 +16,7 @@ export default function TopBarContainer() {
                     <Typography variant="overline" component="h1" fontWeight="bold" fontSize="1.25rem" lineHeight="1.75rem">Lila Papazian</Typography>
                     <Typography variant="overline" component="h2" width="100%" lineHeight="1.50rem">Frontend Developer</Typography>
                 </Stack>
-                <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={5} sx={{ display: { xs: 'none', md: 'flex' } }} >
+                <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={8} sx={{ display: { xs: 'none', md: 'flex' } }} >
                     {pages.map((page, index) => (
                         <Typography variant="overline" textAlign="center" component="p" key={index}>{page}</Typography>
                     ))}

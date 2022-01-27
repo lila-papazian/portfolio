@@ -6,7 +6,7 @@ import FooterContainer from "../src/components/FooterContainer.tsx";
 
 export default function Index() {
   return (
-    <Container maxWidth={false} disableGutters sx={{backgroundColor: '#F9F8E77A', height: '100%'}}>
+    <Container disableGutters sx={{height: '100%', width: '100%'}}>
       <TopBarContainer />
       <MainContainer />
       {/* <FooterContainer /> */}
