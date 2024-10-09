@@ -2,15 +2,75 @@
 
 ---
 
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <link rel='stylesheet' href='/src/reset.css' />
+    <link
+      href='https://fonts.googleapis.com/css?family=Press+Start+2P'
+      rel='stylesheet'
+    />
+    <link href='https://unpkg.com/nes.css/css/nes.css' rel='stylesheet' />
+    <link rel='stylesheet' href='/src/index.css' />
     <title>Astro</title>
+    <script>
+      const goToStats = document.getElementById("go-to-stats");
+      const statsSection = document.getElementById("stats");
+
+      goToStats?.addEventListener("click", () => {
+        statsSection?.scrollIntoView();
+      });
+
+      const goToResume = document.getElementById("go-to-resume");
+      const resumeSection = document.getElementById("resume");
+      goToResume?.addEventListener("click", () => {
+        resumeSection?.scrollIntoView();
+      });
+
+      const goToContact = document.getElementById("go-to-contact");
+      const contactSection = document.getElementById("contact");
+      goToContact?.addEventListener("click", () => {
+        contactSection?.scrollIntoView();
+      });
+    </script>
   </head>
   <body>
-    <h1>Astro</h1>
+    <header class='header'>
+      <button class='nes-btn' id='go-to-stats'>About Me</button>
+      <button class='nes-btn' id='go-to-resume'>CV/Resume</button>
+      <button class='nes-btn' id='go-to-contact'>Let's talk</button>
+    </header>
+    <main class='main'>
+      <section class='section'>
+        <div class='title-section'>
+          <h1 class='title'>Lila Papazian</h1>
+          <h2 class='subtitle'>Creative web developer, 90's kid.</h2>
+        </div>
+
+        <div class='continue-section'>
+          <h3 class='subtitle'>CONTINUE?</h3>
+          <div class='button-group'>
+            <button class='nes-btn'>YES</button>
+            <button class='nes-btn'>NO</button>
+          </div>
+        </div>
+      </section>
+
+      <section class='section' id='stats'>
+        <h1 class='title'>Stats</h1>
+      </section>
+
+      <section class='section' id='resume'>
+        <h1 class='title'>Resume</h1>
+      </section>
+
+      <section class='section' id='contact'>
+        <h1 class='title'>Contact</h1>
+      </section>
+    </main>
+    <footer>Footer</footer>
   </body>
 </html>

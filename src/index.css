@@ -1,0 +1,58 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100svh;
+  background-attachment: fixed;
+  background-color: #fafafa;
+  background-image: url("/bg.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.5em;
+  gap: 2em;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 72px;
+}
+
+.subtitle {
+  font-size: 36px;
+}
+
+.section {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.continue-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
