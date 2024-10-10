@@ -1,18 +1,15 @@
 ---
-// Generate random daily value (with seed based on date)
 function getRandomValue(min: number, max: number) {
-  const today = new Date().toDateString();
-  let seed = today.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  return Math.floor(Math.sin(seed) * (max - min) + min);
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
 }
 
 const hours = new Date().getHours();
 const magicValue = Math.min((hours / 24) * 100, 100);
 
-// Tea Brewing: set randomly each day
-const teaValue = getRandomValue(50, 100); // Tea skill is always pretty high
+const teaValue = getRandomValue(70, 100); // Tea skill is always pretty high
 
-// WTF/minutes: fluctuates daily
 const wtfValue = getRandomValue(0, 100);
 
 const isSuccess = (value: number) => value >= 75;
@@ -36,7 +33,7 @@ const isError = (value: number) => value < 45;
       rel='stylesheet'
     />
     <link rel='stylesheet' href='/src/index.css' />
-    <title>Astro</title>
+    <title>Lila Papazian</title>
     <script>
       const gameOverSound = new Audio("/game-over.mp3");
       const jumpSound = new Audio("/jump.mp3");
@@ -83,10 +80,10 @@ const isError = (value: number) => value < 45;
       <button>Volume up/down</button>
     </header>
     <main class='main'>
-      <section class='section'>
+      <section class='section first-section'>
         <div class='title-section'>
-          <h1 class='title'>Lila Papazian</h1>
-          <h2 class='subtitle'>Creative web developer, 90's kid.</h2>
+          <h1 class='custom-title'>Lila Papazian</h1>
+          <h2 class='custom-subtitle'>Creative web developer, 90's kid.</h2>
         </div>
 
         <div class='continue-section'>
@@ -99,8 +96,12 @@ const isError = (value: number) => value < 45;
       </section>
 
       <section class='section two-part-section' id='stats'>
-        <div class='nes-container is-rounded is-dark stats-container'>
-          <h1 class='subtitle'>Stats</h1>
+        <div
+          class='nes-container is-rounded is-dark with-title stats-container'
+        >
+          <p class='title' style='width: fit-content; font-size: 24px'>
+            ABOUT ME
+          </p>
           <div class='container'>
             <div class='progress-container'>
               <span>Skills</span>
@@ -108,7 +109,7 @@ const isError = (value: number) => value < 45;
                 <span class='nes-text'>Magic</span>
                 <progress
                   class:list={[
-                    "nes-progress",
+                    "nes-progress progress-dark-bg",
                     { "is-success": isSuccess(magicValue) },
                     { "is-warning": isWarning(magicValue) },
                     { "is-error": isError(magicValue) },
@@ -120,7 +121,7 @@ const isError = (value: number) => value < 45;
                 <span class='nes-text'>Tea Brewing</span>
                 <progress
                   class:list={[
-                    "nes-progress",
+                    "nes-progress progress-dark-bg",
                     { "is-success": isSuccess(teaValue) },
                     { "is-warning": isWarning(teaValue) },
                     { "is-error": isError(teaValue) },
@@ -137,10 +138,10 @@ const isError = (value: number) => value < 45;
                 >
                 <progress
                   class:list={[
-                    "nes-progress",
-                    { "is-success": isSuccess(wtfValue) },
+                    "nes-progress progress-dark-bg",
+                    { "is-success": isError(wtfValue) },
                     { "is-warning": isWarning(wtfValue) },
-                    { "is-error": isError(wtfValue) },
+                    { "is-error": isSuccess(wtfValue) },
                   ]}
                   value={wtfValue}
                   max='100'></progress>
@@ -149,7 +150,7 @@ const isError = (value: number) => value < 45;
             <div class='tools-container'>
               <span>Tools</span>
               <div class='lists'>
-                <ul class='nes-list is-circle'>
+                <ul class='nes-list is-circle white-bullet'>
                   <li>React</li>
                   <li>React Query</li>
                   <li>Zustand</li>
@@ -172,12 +173,115 @@ const isError = (value: number) => value < 45;
         </div>
       </section>
 
-      <section class='section' id='resume'>
-        <h1 class='title'>Resume</h1>
+      <section class='section two-part-section' id='resume'>
+        <div class='nes-container is-rounded is-dark with-title'>
+          <p class='title' style='width: fit-content; font-size: 24px'>
+            RESUME / CV
+          </p>
+          <div class='icon-list' style='padding: 1em 0;'>
+            See it online at:
+            <a
+              href='https://www.linkedin.com/in/lila-papazian/'
+              class='contact'
+            >
+              <i class='nes-icon linkedin is-medium'></i>
+              <p class='link-text'>/lila-papazian</p>
+            </a>
+            or Download as PDF:
+
+            <a
+              href='/public/Lila Papazian CV.pdf'
+              download='Lila Papazian - CV'
+              class='contact nes-btn'
+              >PDF
+            </a>
+          </div>
+          <div class='tools-container'>
+            <article class='article'>
+              <h1>Frontend Engineer at Blue Alba</h1>
+              <p>April 2024 - September 2024</p>
+
+              <div class='lists'>
+                <ul class='nes-list is-circle white-bullet'>
+                  <li>
+                    Develop and integrate new features into web applications
+                    using Typescript, React, Zustand and React-Query, ensuring a
+                    seamless user experience.
+                  </li>
+                  <li>
+                    Maintain and improve code quality by refactoring and adding
+                    comprehensive tests using Jest when feasible (using Working
+                    Effectively with Legacy Code by Michael Feathers as guide).
+                  </li>
+                  <li>
+                    Utilize Jest to add unit testing to key frontend functions,
+                    focusing on custom hooks to ensure reliability and
+                    maintainability.
+                  </li>
+                  <li>
+                    Add components to company-owned component libraries,
+                    ensuring seamless integration with Storybook for better
+                    documentation and visualization
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p>Other tools or technologies used:</p>
+                <p>
+                  StyledComponents, Material UI, ag-grid, chart.js, Typescript
+                </p>
+              </div>
+            </article>
+            <article class='article'>
+              <h1>Web Developer at Despegar</h1>
+              <p>Oct 2018 - April 2021</p>
+              <div class='lists'>
+                <ul class='nes-list is-circle white-bullet'>
+                  <li>
+                    Refactor Angular.js and Javascript legacy code using React
+                    with hooks and Typescript.
+                  </li>
+                  <li>
+                    Implement fully styled components from an internal library
+                    to avoid duplicating code and maintain branding.
+                  </li>
+                </ul>
+              </div>
+              <p>Other tools or technologies used:</p>
+              <p>CSS Modules, React Query</p>
+            </article>
+          </div>
+        </div>
+        <div class='icon-list'>
+          <i class='nes-icon is-large coin up-and-down'></i>
+          <i class='nes-icon is-large coin up-and-down'></i>
+          <i class='nes-icon is-large coin up-and-down'></i>
+        </div>
       </section>
 
       <section class='section' id='contact'>
-        <h1 class='title'>Contact</h1>
+        <div class='nes-container is-rounded is-dark with-title'>
+          <p class='title' style='width: fit-content; font-size: 24px'>
+            LET'S TALK
+          </p>
+          <div class='icon-list' style='padding: 1em 0;'>
+            <a
+              href='https://www.linkedin.com/in/lila-papazian/'
+              class='contact'
+            >
+              <i class='nes-icon linkedin is-medium'></i>
+              <p class='link-text'>/lila-papazian</p>
+            </a>
+            <a href='https://github.com/lila-papazian/' class='contact'>
+              <i class='nes-icon github is-medium'></i>
+              <p class='link-text'>/lila-papazian</p>
+            </a>
+            <a href='mailto:lilapapazian@gmail.com' class='contact'>
+              <i class='nes-icon gmail is-medium'></i>
+              <p class='link-text'>lilapapazian@gmail.com</p>
+            </a>
+          </div>
+        </div>
       </section>
     </main>
     <footer class='footer'>All rights reserved</footer>
