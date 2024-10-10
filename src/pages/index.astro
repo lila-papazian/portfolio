@@ -38,28 +38,39 @@ const isError = (value: number) => value < 45;
     <link rel='stylesheet' href='/src/index.css' />
     <title>Astro</title>
     <script>
+      const gameOverSound = new Audio("/game-over.mp3");
+      const jumpSound = new Audio("/jump.mp3");
+
       const goToStats = document.getElementById("go-to-stats");
       const startGame = document.getElementById("start-game");
-
+      const endGame = document.getElementById("game-over");
       const statsSection = document.getElementById("stats");
 
       goToStats?.addEventListener("click", () => {
+        jumpSound.play();
         statsSection?.scrollIntoView();
       });
 
       startGame?.addEventListener("click", () => {
+        jumpSound.play();
         statsSection?.scrollIntoView();
+      });
+
+      endGame?.addEventListener("click", () => {
+        gameOverSound.play();
       });
 
       const goToResume = document.getElementById("go-to-resume");
       const resumeSection = document.getElementById("resume");
       goToResume?.addEventListener("click", () => {
+        jumpSound.play();
         resumeSection?.scrollIntoView();
       });
 
       const goToContact = document.getElementById("go-to-contact");
       const contactSection = document.getElementById("contact");
       goToContact?.addEventListener("click", () => {
+        jumpSound.play();
         contactSection?.scrollIntoView();
       });
     </script>
@@ -69,6 +80,7 @@ const isError = (value: number) => value < 45;
       <button class='nes-btn' id='go-to-stats'>About Me</button>
       <button class='nes-btn' id='go-to-resume'>CV/Resume</button>
       <button class='nes-btn' id='go-to-contact'>Let's talk</button>
+      <button>Volume up/down</button>
     </header>
     <main class='main'>
       <section class='section'>
@@ -80,8 +92,8 @@ const isError = (value: number) => value < 45;
         <div class='continue-section'>
           <h3 class='subtitle'>CONTINUE?</h3>
           <div class='button-group'>
-            <button class='nes-btn' id="start-game">YES</button>
-            <button class='nes-btn'>NO</button>
+            <button class='nes-btn' id='start-game'>YES</button>
+            <button class='nes-btn' id='game-over'>NO</button>
           </div>
         </div>
       </section>
