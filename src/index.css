@@ -25,6 +25,15 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  gap: 1.5em;
+}
+
+.footer {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-bottom: 1.5em;
 }
 
 .title {
@@ -55,4 +64,34 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+
+.container {
+  display: flex;
+  gap: 2em;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  flex-grow: 1;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+}
+
+.tools-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  flex-grow: 1;
+}
+
+.stats-container {
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
 }

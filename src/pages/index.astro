@@ -1,5 +1,23 @@
 ---
+// Generate random daily value (with seed based on date)
+function getRandomValue(min: number, max: number) {
+  const today = new Date().toDateString();
+  let seed = today.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return Math.floor(Math.sin(seed) * (max - min) + min);
+}
 
+const hours = new Date().getHours();
+const magicValue = Math.min((hours / 24) * 100, 100);
+
+// Tea Brewing: set randomly each day
+const teaValue = getRandomValue(50, 100); // Tea skill is always pretty high
+
+// WTF/minutes: fluctuates daily
+const wtfValue = getRandomValue(0, 100);
+
+const isSuccess = (value: number) => value >= 75;
+const isWarning = (value: number) => value < 75 && value >= 45;
+const isError = (value: number) => value < 45;
 ---
 
 <html lang='en'>
@@ -13,14 +31,23 @@
       href='https://fonts.googleapis.com/css?family=Press+Start+2P'
       rel='stylesheet'
     />
-    <link href='https://unpkg.com/nes.css/css/nes.css' rel='stylesheet' />
+    <link
+      href='https://unpkg.com/nes.css@latest/css/nes.min.css'
+      rel='stylesheet'
+    />
     <link rel='stylesheet' href='/src/index.css' />
     <title>Astro</title>
     <script>
       const goToStats = document.getElementById("go-to-stats");
+      const startGame = document.getElementById("start-game");
+
       const statsSection = document.getElementById("stats");
 
       goToStats?.addEventListener("click", () => {
+        statsSection?.scrollIntoView();
+      });
+
+      startGame?.addEventListener("click", () => {
         statsSection?.scrollIntoView();
       });
 
@@ -53,14 +80,85 @@
         <div class='continue-section'>
           <h3 class='subtitle'>CONTINUE?</h3>
           <div class='button-group'>
-            <button class='nes-btn'>YES</button>
+            <button class='nes-btn' id="start-game">YES</button>
             <button class='nes-btn'>NO</button>
           </div>
         </div>
       </section>
 
       <section class='section' id='stats'>
-        <h1 class='title'>Stats</h1>
+        <div class='nes-container is-rounded is-dark stats-container'>
+          <h1 class='subtitle'>Stats</h1>
+          <div class='container'>
+            <div class='progress-container'>
+              <span>Skills</span>
+              <div class='skill'>
+                <span class='nes-text'>Magic</span>
+                <progress
+                  class:list={[
+                    "nes-progress",
+                    { "is-success": isSuccess(magicValue) },
+                    { "is-warning": isWarning(magicValue) },
+                    { "is-error": isError(magicValue) },
+                  ]}
+                  value={magicValue}
+                  max='100'></progress>
+              </div>
+              <div class='skill'>
+                <span class='nes-text'>Tea Brewing</span>
+                <progress
+                  class:list={[
+                    "nes-progress",
+                    { "is-success": isSuccess(teaValue) },
+                    { "is-warning": isWarning(teaValue) },
+                    { "is-error": isError(teaValue) },
+                  ]}
+                  value={teaValue}
+                  max='100'></progress>
+              </div>
+              <div class='skill'>
+                <a
+                  href='https://www.osnews.com/story/19266/wtfsm/'
+                  class='nes-text'
+                  style='color: white; text-decoration: underline;'
+                  >WTFs / minute</a
+                >
+                <progress
+                  class:list={[
+                    "nes-progress",
+                    { "is-success": isSuccess(wtfValue) },
+                    { "is-warning": isWarning(wtfValue) },
+                    { "is-error": isError(wtfValue) },
+                  ]}
+                  value={wtfValue}
+                  max='100'></progress>
+              </div>
+            </div>
+            <div class='tools-container'>
+              <span>Tools</span>
+              <div class='lists'>
+                <ul class='nes-list is-circle'>
+                  <li>React</li>
+                  <li>React Query</li>
+                  <li>Zustand</li>
+                  <li>Redux</li>
+                  --- <li>JavaScript</li>
+                  <li>TypeScript</li>
+                  --- <li>SaSS</li>
+                  <li>Tailwind</li>
+                  <li>Styled Components</li>
+                  --- <li>Next.js</li><li>Astro</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- TBD -->
+        <!-- <div class='icon-list'>
+          <i class='nes-icon coin is-large'></i>
+          <i class='nes-icon coin is-large'></i>
+          <i class='nes-icon coin is-large'></i>
+        </div> -->
       </section>
 
       <section class='section' id='resume'>
@@ -71,6 +169,6 @@
         <h1 class='title'>Contact</h1>
       </section>
     </main>
-    <footer>Footer</footer>
+    <footer class='footer'>All rights reserved</footer>
   </body>
 </html>
