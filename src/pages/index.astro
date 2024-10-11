@@ -57,14 +57,10 @@ const isError = (value: number) => value < 45;
 
     <script src='./../../src/interactive-buttons.js' defer></script>
   </head>
-  <body>
+  <body tabindex="0">
     <header class='header'>
       <div>
-        <button class='nes-btn'><img src='/mute.png' width='24px' /></button>
-        <label class='nes-btn' id='toggle-motion'>
-          <input type='checkbox' class='nes-checkbox checkbox' />
-          <span>Prefers reduced motion</span>
-        </label>
+        <button class='nes-btn' id="toggle-sound"><img src='/high-volume.png' width='24px' alt="Sound On" id="sound-icon" /></button>
       </div>
       <div>
         <button class='nes-btn' id='go-to-stats'>About Me</button>
