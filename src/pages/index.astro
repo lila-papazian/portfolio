@@ -9,9 +9,9 @@ function getRandomValue(min: number, max: number) {
 const hours = new Date().getHours();
 const magicValue = Math.min((hours / 24) * 100, 100);
 
-const teaValue = getRandomValue(70, 100); // Tea skill is always pretty high
+const teaValue = getRandomValue(70, 100);
 
-const wtfValue = getRandomValue(0, 100);
+const wtfValue = getRandomValue(10, 100);
 
 const isSuccess = (value: number) => value >= 75;
 const isWarning = (value: number) => value < 75 && value >= 45;
@@ -47,20 +47,26 @@ const isError = (value: number) => value < 45;
       onload="this.rel='stylesheet'"
     />
 
-    <!-- Stylesheets -->
-    <link rel='stylesheet' href='../src/reset.css' />
     <link
       href='https://unpkg.com/nes.css@latest/css/nes.min.css'
       rel='stylesheet'
     />
-    <link rel='stylesheet' href='../src/index.css' />
+    <link href='/styles/reset.css' rel='stylesheet' />
+    <link href='/styles/index.css' rel='stylesheet' />
 
-    <script src='./../../src/interactive-buttons.js' defer></script>
+    <script src="/src/interactive-buttons.js" />
   </head>
-  <body tabindex="0">
+  <body tabindex='0'>
     <header class='header'>
       <div>
-        <button class='nes-btn' id="toggle-sound"><img src='/high-volume.png' width='24px' alt="Sound On" id="sound-icon" /></button>
+        <button class='nes-btn' id='toggle-sound'
+          ><img
+            src='/high-volume.png'
+            width='24px'
+            alt='Sound On'
+            id='sound-icon'
+          /></button
+        >
       </div>
       <div>
         <button class='nes-btn' id='go-to-stats'>About Me</button>
@@ -115,7 +121,7 @@ const isError = (value: number) => value < 45;
                     { "is-warning": isWarning(teaValue) },
                     { "is-error": isError(teaValue) },
                   ]}
-                  value={teaValue}
+                  value={getRandomValue(70, 100)}
                   max='100'></progress>
               </div>
               <div class='skill'>
@@ -266,6 +272,6 @@ const isError = (value: number) => value < 45;
       </section>
     </main>
     <footer class='footer'>2024 Lila Papazian. All pixels reserved.</footer>
-    <script src='./../../src/secret-level.js' defer></script>
+    <script src="/src/secret-level.js" />
   </body>
 </html>
