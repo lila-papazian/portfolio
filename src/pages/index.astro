@@ -3,11 +3,11 @@ import Coins from "../components/Coins.astro";
 function getRandomValue(min: number, max: number) {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // Both max and min are inclusive
 }
 
 const hours = new Date().getHours();
-const magicValue = Math.min((hours / 24) * 100, 100);
+const magicValue = Math.min(((hours / 24) * 100) + 5, 100); // Min level for magic is 5
 
 const teaValue = getRandomValue(70, 100);
 
@@ -21,7 +21,6 @@ const isError = (value: number) => value < 45;
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
     <title>Lila Papazian</title>
