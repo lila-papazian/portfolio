@@ -3,11 +3,11 @@ import Coins from "../components/Coins.astro";
 function getRandomValue(min: number, max: number) {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // Both max and min are inclusive
 }
 
 const hours = new Date().getHours();
-const magicValue = Math.min((hours / 24) * 100, 100);
+const magicValue = Math.min(((hours / 24) * 100) + 5, 100); // Min level for magic is 5
 
 const teaValue = getRandomValue(70, 100);
 
@@ -21,7 +21,6 @@ const isError = (value: number) => value < 45;
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
     <title>Lila Papazian</title>
@@ -31,7 +30,7 @@ const isError = (value: number) => value < 45;
       body {
         background-attachment: fixed;
         background-color: #fafafa;
-        background-image: url("/bg.webp");
+        background-image: url("/assets/bg.webp");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -39,7 +38,8 @@ const isError = (value: number) => value < 45;
     </style>
 
     <!-- Preloads -->
-    <link rel='preload' href='/bg.webp' as='image' />
+    <link rel='preload' href='/assets/bg.webp' as='image' />
+
     <link
       rel='preload'
       href='https://fonts.googleapis.com/css?family=Press+Start+2P'
@@ -54,14 +54,16 @@ const isError = (value: number) => value < 45;
     <link href='/styles/reset.css' rel='stylesheet' />
     <link href='/styles/index.css' rel='stylesheet' />
 
-    <script src="/src/interactive-buttons.js" />
+    <script src="../scripts/interactive-buttons.js"></script>
+    <script src="../scripts/secret-level.js"></script>
   </head>
   <body tabindex='0'>
     <header class='header'>
       <div>
         <button class='nes-btn' id='toggle-sound'
           ><img
-            src='/high-volume.png'
+            src='/assets/high-volume.png'
+
             width='24px'
             alt='Sound On'
             id='sound-icon'
@@ -272,6 +274,5 @@ const isError = (value: number) => value < 45;
       </section>
     </main>
     <footer class='footer'>2024 Lila Papazian. All pixels reserved.</footer>
-    <script src="/src/secret-level.js" />
   </body>
 </html>
