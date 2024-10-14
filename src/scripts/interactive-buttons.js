@@ -1,7 +1,7 @@
-const gameOverSound = new Audio("/game-over.mp3");
-const jumpSound = new Audio("/jump.mp3");
-const powerDownSound = new Audio("/power-down.mp3");
-const powerUpSound = new Audio("/power-up.mp3");
+const gameOverSound = new Audio("/sounds/game-over.mp3");
+const jumpSound = new Audio("/sounds/jump.mp3");
+const powerDownSound = new Audio("/sounds/power-down.mp3");
+const powerUpSound = new Audio("/sounds/power-up.mp3");
 
 const goToStats = document.getElementById("go-to-stats");
 const startGame = document.getElementById("start-game");
@@ -14,7 +14,7 @@ let soundEnabled = true;
 
 const toggleSound = () => {
   soundEnabled = !soundEnabled;
-  soundIcon.src = soundEnabled ? "/high-volume.png" : "/mute.png";
+  soundIcon.src = soundEnabled ? "/assets/high-volume.png" : "/assets/mute.png";
 
   if (soundEnabled) {
     soundIcon.alt = "Sound On";

@@ -31,7 +31,7 @@ const isError = (value: number) => value < 45;
       body {
         background-attachment: fixed;
         background-color: #fafafa;
-        background-image: url("/bg.webp");
+        background-image: url("/assets/bg.webp");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -39,7 +39,7 @@ const isError = (value: number) => value < 45;
     </style>
 
     <!-- Preloads -->
-    <link rel='preload' href='/bg.webp' as='image' />
+    <link rel='preload' href='/assets/bg.webp' as='image' />
     <link
       rel='preload'
       href='https://fonts.googleapis.com/css?family=Press+Start+2P'
@@ -54,14 +54,16 @@ const isError = (value: number) => value < 45;
     <link href='/styles/reset.css' rel='stylesheet' />
     <link href='/styles/index.css' rel='stylesheet' />
 
-    <script src="/src/interactive-buttons.js" />
+    <script src="../scripts/interactive-buttons.js"></script>
+    <script src="../scripts/secret-level.js"></script>
+
   </head>
   <body tabindex='0'>
     <header class='header'>
       <div>
         <button class='nes-btn' id='toggle-sound'
           ><img
-            src='/high-volume.png'
+            src='/assets/high-volume.png'
             width='24px'
             alt='Sound On'
             id='sound-icon'
@@ -272,6 +274,5 @@ const isError = (value: number) => value < 45;
       </section>
     </main>
     <footer class='footer'>2024 Lila Papazian. All pixels reserved.</footer>
-    <script src="/src/secret-level.js" />
   </body>
 </html>
