@@ -15,6 +15,11 @@ html {
 
 body {
   min-height: 100svh;
+  font-family: 'Space Mono', monospace;
+}
+
+.custom-title, .custom-subtitle {
+  font-family: 'Silkscreen';
 }
 
 .header {

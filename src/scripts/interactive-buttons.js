@@ -3,15 +3,26 @@ const jumpSound = new Audio("/sounds/jump.mp3");
 const powerDownSound = new Audio("/sounds/power-down.mp3");
 const powerUpSound = new Audio("/sounds/power-up.mp3");
 
-const goToStats = document.getElementById("go-to-stats");
-const startGame = document.getElementById("start-game");
-const endGame = document.getElementById("game-over");
-const statsSection = document.getElementById("stats");
 
-const toggleSoundButton = document.getElementById("toggle-sound");
 const soundIcon = document.getElementById("sound-icon");
 let soundEnabled = true;
 
+const startGame = document.getElementById("start-game");
+startGame?.addEventListener("click", () => {
+  if (soundEnabled) {
+    jumpSound.play();
+  }
+  statsSection?.scrollIntoView();
+});
+
+const endGame = document.getElementById("game-over");
+endGame?.addEventListener("click", () => {
+  if (soundEnabled) {
+    gameOverSound.play();
+  }
+});
+
+const toggleSoundButton = document.getElementById("toggle-sound");
 const toggleSound = () => {
   soundEnabled = !soundEnabled;
   soundIcon.src = soundEnabled ? "/assets/high-volume.png" : "/assets/mute.png";
@@ -24,9 +35,11 @@ const toggleSound = () => {
     powerDownSound.play();
   }
 };
-
 toggleSoundButton.addEventListener("click", toggleSound);
 
+
+const goToStats = document.getElementById("go-to-stats");
+const statsSection = document.getElementById("stats");
 goToStats?.addEventListener("click", () => {
   if (soundEnabled) {
     jumpSound.play();
@@ -34,18 +47,15 @@ goToStats?.addEventListener("click", () => {
   statsSection?.scrollIntoView();
 });
 
-startGame?.addEventListener("click", () => {
+const goToProjects = document.getElementById("go-to-projects");
+const projectsSection = document.getElementById("projects");
+goToProjects?.addEventListener("click", () => {
   if (soundEnabled) {
     jumpSound.play();
   }
-  statsSection?.scrollIntoView();
+  projectsSection?.scrollIntoView();
 });
 
-endGame?.addEventListener("click", () => {
-  if (soundEnabled) {
-    gameOverSound.play();
-  }
-});
 
 const goToResume = document.getElementById("go-to-resume");
 const resumeSection = document.getElementById("resume");
