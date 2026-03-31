@@ -18,7 +18,8 @@ body {
   font-family: 'Space Mono', monospace;
 }
 
-.custom-title, .custom-subtitle {
+.custom-title,
+.custom-subtitle {
   font-family: 'Silkscreen';
 }
 
@@ -66,7 +67,7 @@ body {
 
 .button-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1em;
 }
 
@@ -99,10 +100,18 @@ body {
 
 .custom-title {
   font-size: var(--large-font-size);
+  color: #111;
+  text-shadow:
+    3px 3px 0 #f5e6c8; /* light pixel offset = retro pop */
 }
 
 .custom-subtitle {
-  font-size: var(--medium-font-size);
+  font-size: 20px; /* slightly smaller = better hierarchy */
+  color: #1a1a1a;
+
+  /* pixel-style shadow (not blur) */
+  text-shadow:
+    2px 2px 0 #b4aa91; /* earthy shadow that matches background */
 }
 
 .link-text {
@@ -188,4 +197,9 @@ body {
 .checkbox {
   margin-left: 12px;
   width: 3px;
+}
+
+
+.fun-line {
+  font-size: 18px;
 }
