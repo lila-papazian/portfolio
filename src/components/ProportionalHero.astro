@@ -1,0 +1,238 @@
+---
+import "../styles/proportional-hero.css";
+
+const IMAGE = {
+  width: 2560,
+  height: 1440,
+};
+
+const NAME_ZONE = {
+  left: 0.0,
+  top: 0.63,
+  right: 0.66,
+  bottom: 0.85,
+};
+
+const NAVIGATION = [
+  {
+    x: 0.369,
+    y: 0.271,
+    href: "/proyectos",
+    label: "Proyectos",
+  },
+  {
+    x: 0.621,
+    y: 0.365,
+    href: "/experiencia",
+    label: "Experiencia",
+  },
+  {
+    x: 0.418,
+    y: 0.549,
+    href: "/sobre-mi",
+    label: "Sobre mí",
+  },
+  {
+    x: 0.064,
+    y: 0.078,
+    href: "/contacto",
+    label: "Contacto",
+  },
+];
+---
+
+<section class="hero" data-hero>
+
+  <picture class="hero__picture hero__picture--full" data-image-with-name>
+    <source
+      srcset="
+        /assets/hero-full-1280.webp 1280w,
+        /assets/hero-full-1920.webp 1920w,
+        /assets/hero-full-2560.webp 2560w
+      "
+      sizes="100vw"
+    />
+
+    <img
+      class="hero__image"
+      src="/assets/hero-full-1920.webp"
+      alt="Lila Papazian"
+    />
+  </picture>
+
+  <picture class="hero__picture hero__picture--clean" data-clean-image>
+    <source
+      srcset="
+        /assets/hero-clean-640.webp 640w,
+        /assets/hero-clean-960.webp 960w,
+        /assets/hero-clean-1280.webp 1280w,
+        /assets/hero-clean-1920.webp 1920w,
+        /assets/hero-clean-2560.webp 2560w
+      "
+      sizes="100vw"
+    />
+
+    <img
+      class="hero__image"
+      src="/assets/hero-clean-1280.webp"
+      alt=""
+      aria-hidden="true"
+    />
+  </picture>
+
+  <h1 class="hero__name" data-html-name>Lila Papazian</h1>
+
+  {
+    NAVIGATION.map((item) => (
+      <a class="hero__anchor" href={item.href} data-x={item.x} data-y={item.y}>
+        {item.label}
+      </a>
+    ))
+  }
+</section>
+
+<script define:vars={{ IMAGE, NAME_ZONE }}>
+  function calculateImageLayout(viewportWidth, viewportHeight) {
+
+    const scale = Math.max(
+      viewportWidth / IMAGE.width,
+      viewportHeight / IMAGE.height,
+    );
+
+    const renderedWidth = IMAGE.width * scale;
+    const renderedHeight = IMAGE.height * scale;
+    const extraWidth = renderedWidth - viewportWidth;
+    const extraHeight = renderedHeight - viewportHeight;
+
+    let cropLeft = 0;
+    let cropTop = extraHeight / 2;
+
+    if (extraHeight > 0) {
+      const nameTop = NAME_ZONE.top * renderedHeight;
+      const nameBottom = NAME_ZONE.bottom * renderedHeight;
+
+      // Crop mínimo que podemos hacer desde arriba
+      // sin cortar la parte inferior del nombre.
+      const minimumCropTop = Math.max(0, nameBottom - viewportHeight);
+
+      // Crop máximo que podemos hacer desde arriba
+      // sin cortar la parte superior del nombre.
+      const maximumCropTop = Math.min(extraHeight, nameTop);
+
+      // Si existe una posición posible que mantenga
+      // toda la zona del nombre dentro del viewport,
+      // usamos esa posición.
+      if (minimumCropTop <= maximumCropTop) {
+        cropTop = Math.min(
+          Math.max(extraHeight / 2, minimumCropTop),
+          maximumCropTop,
+        );
+      }
+    }
+
+    const objectPositionX = extraWidth > 0 ? (cropLeft / extraWidth) * 100 : 50;
+
+    const objectPositionY =
+      extraHeight > 0 ? (cropTop / extraHeight) * 100 : 50;
+
+    return {
+      renderedWidth,
+      renderedHeight,
+      cropLeft,
+      cropTop,
+      objectPosition: `${objectPositionX}% ${objectPositionY}%`,
+    };
+  }
+
+ 
+  const hero = document.querySelector("[data-hero]");
+
+  if (!hero) {
+    throw new Error("Hero element not found");
+  }
+
+  const fullPicture = hero.querySelector("[data-image-with-name]");
+
+  const cleanPicture = hero.querySelector("[data-clean-image]");
+
+  const fullImage = fullPicture?.querySelector("img");
+
+  const cleanImage = cleanPicture?.querySelector("img");
+
+  const htmlName = hero.querySelector("[data-html-name]");
+
+  const navigation = hero.querySelectorAll("[data-x][data-y]");
+
+function updateHero() {
+  const viewportWidth = hero.clientWidth;
+  const viewportHeight = hero.clientHeight;
+
+  if (!viewportWidth || !viewportHeight) {
+    return;
+  }
+
+  const layout = calculateImageLayout(
+    viewportWidth,
+    viewportHeight
+  );
+
+  if (fullImage) {
+    fullImage.style.objectPosition =
+      layout.objectPosition;
+  }
+
+  if (cleanImage) {
+    cleanImage.style.objectPosition =
+      layout.objectPosition;
+  }
+
+  const nameWidth =
+    (NAME_ZONE.right - NAME_ZONE.left) *
+    layout.renderedWidth;
+
+  const nameFits =
+    nameWidth <= viewportWidth;
+
+  if (nameFits) {
+    if (fullPicture) {
+      fullPicture.style.display = "block";
+    }
+
+    if (cleanPicture) {
+      cleanPicture.style.display = "none";
+    }
+
+    if (htmlName) {
+      htmlName.style.display = "none";
+    }
+
+    return;
+  }
+
+  if (fullPicture) {
+    fullPicture.style.display = "none";
+  }
+
+  if (cleanPicture) {
+    cleanPicture.style.display = "block";
+  }
+
+  if (htmlName) {
+    htmlName.style.display = "block";
+  }
+}
+
+  updateHero();
+
+  const resizeObserver = new ResizeObserver(updateHero);
+
+  resizeObserver.observe(hero);
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      resizeObserver.disconnect();
+    },
+    { once: true },
+  );
+</script>
