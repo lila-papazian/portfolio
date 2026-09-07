@@ -15,34 +15,21 @@ const NAME_ZONE = {
 
 const NAVIGATION = [
   {
-    x: 0.369,
-    y: 0.271,
-    href: "/proyectos",
-    label: "Proyectos",
+    href: "#work",
+    label: "Work",
   },
   {
-    x: 0.621,
-    y: 0.365,
-    href: "/experiencia",
-    label: "Experiencia",
+    href: "#experience",
+    label: "Experience",
   },
   {
-    x: 0.418,
-    y: 0.549,
-    href: "/sobre-mi",
-    label: "Sobre mí",
-  },
-  {
-    x: 0.064,
-    y: 0.078,
-    href: "/contacto",
-    label: "Contacto",
+    href: "#reach-out",
+    label: "Reach Out",
   },
 ];
 ---
 
 <section class="hero" data-hero>
-
   <picture class="hero__picture hero__picture--full" data-image-with-name>
     <source
       srcset="
@@ -82,18 +69,36 @@ const NAVIGATION = [
 
   <h1 class="hero__name" data-html-name>Lila Papazian</h1>
 
-  {
-    NAVIGATION.map((item) => (
-      <a class="hero__anchor" href={item.href} data-x={item.x} data-y={item.y}>
-        {item.label}
-      </a>
-    ))
-  }
+  <nav>
+    <ul class="navigation" data-navbar>
+      {
+        NAVIGATION.map((item) => {
+          const isReachOut = item.href === "#reach-out";
+          return (
+            <li>
+              <a href={item.href}>
+                {isReachOut ? (
+                  <>
+                    <span>{item.label}</span>
+                    <span class="arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </>
+                ) : (
+                  item.label
+                )}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+
 </section>
 
 <script define:vars={{ IMAGE, NAME_ZONE }}>
   function calculateImageLayout(viewportWidth, viewportHeight) {
-
     const scale = Math.max(
       viewportWidth / IMAGE.width,
       viewportHeight / IMAGE.height,
@@ -144,7 +149,6 @@ const NAVIGATION = [
     };
   }
 
- 
   const hero = document.querySelector("[data-hero]");
 
   if (!hero) {
@@ -161,66 +165,80 @@ const NAVIGATION = [
 
   const htmlName = hero.querySelector("[data-html-name]");
 
-  const navigation = hero.querySelectorAll("[data-x][data-y]");
+  const navigation = hero.querySelector("[data-navbar]");
 
-function updateHero() {
-  const viewportWidth = hero.clientWidth;
-  const viewportHeight = hero.clientHeight;
+  function updateHero() {
+    const viewportWidth = hero.clientWidth;
+    const viewportHeight = hero.clientHeight;
 
-  if (!viewportWidth || !viewportHeight) {
-    return;
-  }
+    if (!viewportWidth || !viewportHeight) {
+      return;
+    }
 
-  const layout = calculateImageLayout(
-    viewportWidth,
-    viewportHeight
-  );
+    const layout = calculateImageLayout(viewportWidth, viewportHeight);
 
-  if (fullImage) {
-    fullImage.style.objectPosition =
-      layout.objectPosition;
-  }
+    if (fullImage) {
+      fullImage.style.objectPosition = layout.objectPosition;
+    }
 
-  if (cleanImage) {
-    cleanImage.style.objectPosition =
-      layout.objectPosition;
-  }
+    if (cleanImage) {
+      cleanImage.style.objectPosition = layout.objectPosition;
+    }
 
-  const nameWidth =
-    (NAME_ZONE.right - NAME_ZONE.left) *
-    layout.renderedWidth;
+    const nameWidth = (NAME_ZONE.right - NAME_ZONE.left) * layout.renderedWidth;
+    const nameFits = nameWidth <= viewportWidth;
 
-  const nameFits =
-    nameWidth <= viewportWidth;
+    if (navigation) {
+      if (nameFits) {
+        // Full hero (desktop, con imagen): anclado arriba a la derecha.
+        navigation.style.left = "auto";
+        navigation.style.right = "2rem";
+        navigation.style.top = "2rem";
+        navigation.style.transform = "";
+      } else {
+        // Clean hero: anclado arriba al centro.
+        navigation.style.left = "50%";
+        navigation.style.right = "auto";
+        navigation.style.top = "2rem";
+        navigation.style.transform = "translateX(-50%)";
+      }
 
-  if (nameFits) {
+      // El h1 necesita saber cuánto espacio ocupa el navbar
+      // para centrarse en el espacio restante del hero.
+      const navRect = navigation.getBoundingClientRect();
+      const heroRect = hero.getBoundingClientRect();
+      const navSpace = navRect.bottom - heroRect.top + 32; // 32px = separación extra
+      hero.style.setProperty("--navbar-space", `${navSpace}px`);
+    }
+
+    if (nameFits) {
+      if (fullPicture) {
+        fullPicture.style.display = "block";
+      }
+
+      if (cleanPicture) {
+        cleanPicture.style.display = "none";
+      }
+
+      if (htmlName) {
+        htmlName.style.display = "none";
+      }
+
+      return;
+    }
+
     if (fullPicture) {
-      fullPicture.style.display = "block";
+      fullPicture.style.display = "none";
     }
 
     if (cleanPicture) {
-      cleanPicture.style.display = "none";
+      cleanPicture.style.display = "block";
     }
 
     if (htmlName) {
-      htmlName.style.display = "none";
+      htmlName.style.display = "flex";
     }
-
-    return;
   }
-
-  if (fullPicture) {
-    fullPicture.style.display = "none";
-  }
-
-  if (cleanPicture) {
-    cleanPicture.style.display = "block";
-  }
-
-  if (htmlName) {
-    htmlName.style.display = "block";
-  }
-}
 
   updateHero();
 
