@@ -1,14 +1,20 @@
 ---
-import ProportionalHero from "../components/ProportionalHero.astro";
+import HeaderRow from "@components/HeaderRow.astro";
+import "../styles/global.css";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Lila Papazian — Product Engineer</title>
 
     <meta
@@ -44,13 +50,101 @@ import ProportionalHero from "../components/ProportionalHero.astro";
         ]
       }
     </script>
-
-    <link href="/styles/reset.css" rel="stylesheet" />
-    <link href="/styles/index.css" rel="stylesheet" />
   </head>
-  <body>
-    <main>
-      <ProportionalHero />
+  <body class="bg-dark text-white min-h-svh p-4 flex flex-col gap-4">
+    <header
+      id="navbar"
+      class="fixed inset-x-0 top-0 z-50 px-4 transition-all duration-300"
+    >
+      <nav class="flex items-center justify-between px-6 py-4">
+        <a
+          href="/"
+          id="nav-name"
+          class="translate-y-[-8px] font-sentient font-bold text-xl opacity-0 transition-all duration-300"
+        >
+          LILA PAPAZIAN
+        </a>
+
+        <ul class="flex flex-row gap-4 justify-end">
+          <li>
+            <a href="#" class="underline-offset-4 decoration-2 decoration-accent hover:underline"
+              >work</a
+            >
+          </li>
+          <li>
+            <a href="#" class="underline-offset-4 decoration-2 decoration-accent hover:underline"
+              >experience</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="underline-offset-4 decoration-2 decoration-accent hover:underline after:content-['_↗']"
+              >reach out</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex-1 flex flex-col gap-4">
+      <section id="hero" class="h-svh flex flex-col justify-center gap-8">
+        <div>
+          <h1 class="font-sentient text-8xl font-bold">LILA PAPAZIAN</h1>
+
+          <h2>
+            Senior Frontend Engineer — product thinking, architectural
+            decisions, shipped at scale
+          </h2>
+        </div>
+        <div class="flex flex-row gap-4">
+          <button
+            class=" cursor-pointer border-2 border-black
+    bg-accent px-5 py-3
+    text-white
+    shadow-[6px_6px_0_#000]
+    transition-[transform,box-shadow] duration-100
+    hover:translate-x-[6px]
+    hover:translate-y-[6px]
+    hover:shadow-none"
+            >View my work</button
+          >
+          <button
+            class="cursor-pointer border-2 border-accent
+    px-5 py-3
+    text-white
+    hover:bg-accent
+    hover:text-white shadow-[6px_6px_0_#000]
+    transition-[transform,box-shadow] duration-100
+    hover:translate-x-[6px]
+    hover:translate-y-[6px]
+    hover:shadow-none""
+            >Reach out</button
+          >
+        </div>
+      </section>
     </main>
+    <footer>footer</footer>
+    <script>
+      const navName = document.querySelector("#nav-name");
+      const hero = document.querySelector("#hero");
+
+      if (navName && hero) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            navName.classList.toggle("opacity-0", entry.isIntersecting);
+            navName.classList.toggle(
+              "translate-y-[-8px]",
+              entry.isIntersecting,
+            );
+
+            navName.classList.toggle("opacity-100", !entry.isIntersecting);
+            navName.classList.toggle("translate-y-0", !entry.isIntersecting);
+          },
+          { threshold: 0 },
+        );
+
+        observer.observe(hero);
+      }
+    </script>
   </body>
 </html>

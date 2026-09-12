@@ -81,25 +81,3 @@
   font-style: italic;
   font-display: swap;
 }
-
-/* ------------------------------------------------------------------
-   ALTERNATIVA: si en vez de los pesos estáticos descargaste
-   la versión Variable de Fontshare, borrá todos los @font-face
-   de arriba y usá solo estos dos en su lugar:
-
-@font-face {
-  font-family: "Sentient";
-  src: url("/fonts/sentient/Sentient-Variable.woff2") format("woff2");
-  font-weight: 200 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Sentient";
-  src: url("/fonts/sentient/Sentient-VariableItalic.woff2") format("woff2");
-  font-weight: 200 700;
-  font-style: italic;
-  font-display: swap;
-}
-------------------------------------------------------------------- */
