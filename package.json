@@ -2,6 +2,9 @@
   "name": "portfolio",
   "type": "module",
   "version": "1.0.0",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -13,24 +16,21 @@
   },
   "dependencies": {
     "@astrojs/check": "0.9.5",
-    "@astrojs/react": "^6.0.5",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.7",
     "astro": "^5.15.5",
     "howler": "^2.2.4",
     "nes.css": "^2.3.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
     "react-fast-marquee": "^1.6.5",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.6.3"
   },
   "devDependencies": {
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "vite": "6.4.1"
   },
   "allowScripts": {
     "esbuild@0.27.7": true
-  }
+  },
+  "packageManager": "pnpm@12.4.1"
 }
