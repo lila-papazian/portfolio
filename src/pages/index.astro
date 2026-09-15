@@ -159,19 +159,17 @@ const experiences = [
       </nav>
     </header>
     <main class="flex-1 flex flex-col gap-4">
-      <section id="hero" class="flex flex-col py-8 justify-center gap-8 border-b border-accent/25">
+      <section id="hero" class="flex flex-col py-8 justify-center gap-8">
         <div>
           <h3 class="text-[0.8em] uppercase">
             React <span class="text-accent font-bold">·</span> TypeScript <span
               class="text-accent font-bold">·</span
             > UX craft
           </h3>
-          <h1 class="font-sentient text-8xl font-bold">LILA PAPAZIAN</h1>
+          <h1 class="font-sentient text-[clamp(3.5rem,12vw,6rem)] font-bold">LILA PAPAZIAN</h1>
 
-          <h2>
-            Product Frontend Engineer — product thinking, technical decisions, building for real
-            users
-          </h2>
+          <h2 class="text-xl">Senior Frontend Engineer</h2>
+          <h2 class="text-xl">Product thinking, technical decisions, building for real users.</h2>
         </div>
         <div class="flex flex-row gap-4 justify-center md:justify-start">
           <a
@@ -197,24 +195,25 @@ const experiences = [
               transition-[transform,box-shadow] duration-100
               hover:translate-x-[6px]
               hover:translate-y-[6px]
-              hover:shadow-none"
+              hover:shadow-none
+              after:content-['_↗']"
           >
             Reach out
           </a>
         </div>
       </section>
-      <section id="work" class="py-8 flex flex-col gap-12 border-b border-accent/25">
+      <section id="work" class="py-8 flex flex-col gap-12">
         <div class="flex flex-col gap-8">
           <div>
-            <h2 class="text-4xl uppercase font-bold">[ WORK EXPERIENCE ]</h2>
+            <h2 class="text-4xl uppercase font-bold">[ SELECTED WORK ]</h2>
           </div>
           <div class="flex flex-col md:flex-row gap-4 md:gap-8">
             <div class="flex-1 flex flex-col align-center justify-center gap-8">
               <div>
-                <h2 class="text-xl uppercase font-bold">CASE STUDY #1: OPEN LIBRARY LENDING MODEL</h2>
+                <h2 class="text-xl uppercase font-bold">OPEN LIBRARY LENDING MODEL</h2>
                 <h3>Understanding what happens before clicking “BORROW”</h3>
               </div>
-              <button
+              <a href=""
                 class="text-[0.8em] uppercase cursor-pointer border-2 border-accent
               px-5 py-3
               text-white
@@ -229,7 +228,7 @@ const experiences = [
               hover:shadow-none"
               >
                 Read full article
-              </button>
+              </a>
               <Image
                 alt="Collage showing old library checkout cards overlapping with a digital screenshot of The Hobbit on the Open Library website, highlighting the transition from physical to digital borrowing."
                 src={booksCollageImg}
@@ -284,47 +283,77 @@ const experiences = [
           <div class="diff-resizer"></div>
         </figure> -->
       </section>
-      <section id="experience" class="py-8 flex flex-col gap-12 border-b border-accent/25">
+      <section id="about" class="relative overflow-hidden py-12 flex flex-col gap-12">
+        <!-- Decorative UTN blueprint -->
+        <img
+          src="/utn-map.webp"
+          alt=""
+          aria-hidden="true"
+          class="absolute left-[180px] top-1/2 z-0 w-[900px] -translate-y-1/2 rotate-[-2deg] opacity-[0.05] pointer-events-none select-none"
+        />
+
+        <!-- Content -->
+        <div class="relative z-10">
+          <h2 class="text-4xl uppercase font-bold">[ ABOUT ME ]</h2>
+        </div>
+
+        <div class="relative z-10 grid grid-cols-2 gap-x-8 gap-y-12">
+          <!-- Intro -->
+          <div class="flex flex-col gap-4 max-w-[60ch]">
+            <h2 class="max-w-[60ch]">
+              I like building things that sit between technical constraints and human behavior.
+            </h2>
+
+            <h2 class="max-w-[60ch]">
+              I started in frontend, but the problems I enjoy most don't stop at the UI.
+            </h2>
+          </div>
+
+          <!-- Meta -->
+          <div class="flex flex-col gap-6">
+            <div>
+              <div class="uppercase font-bold text-accent">Role</div>
+
+              <ul>
+                <li>Senior Frontend Engineer</li>
+                <li>Product Engineer</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="uppercase font-bold text-accent">Location</div>
+
+              <ul>
+                <li>Argentina</li>
+                <li>Remote First</li>
+                <li>Open to relocation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="experience" class="py-8 flex flex-col gap-12">
         <div class="flex flex-col gap-4 md:gap-8">
           <div>
-            <h2 class="text-4xl uppercase font-bold">[ WORK EXPERIENCE ]</h2>
+            <h2 class="text-4xl uppercase font-bold">[ EXPERIENCE ]</h2>
           </div>
           <ExperienceCards experiences={experiences} />
         </div>
       </section>
-      <section id="about" class="py-8 flex flex-col gap-12 border-b border-accent/25">
-        <div>
-          <h2 class="text-4xl uppercase font-bold">[ ABOUT ME ]</h2>
-        </div>
-        <div class="grid grid-cols-3 grid-rows-2 gap-x-8 gap-y-12">
-          <div>
-            <div class="uppercase font-bold text-accent">Role</div>
-            <ul>
-              <li>Senior Frontend Engineer</li>
-              <li>Product Engineer</li>
-            </ul>
-          </div>
-          <div>
-            <div class="uppercase font-bold text-accent">Location</div>
-            <ul>
-              <li>Argentina</li>
-              <li>Remote First</li>
-              <li>Open to relocation</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section id="reach-out" class="pt-8 flex flex-col gap-12">
-        <div class="flex flex-col gap-4">
+
+      <section id="reach-out" class="relative pt-8 pb-8 flex flex-col gap-8">
+        <div class="flex flex-col gap-4 z-1">
           <div>
             <h2 class="text-4xl uppercase font-bold">[ REACH OUT ]</h2>
           </div>
-          <h3>
-            Got a problem nobody's defined yet<span class="text-accent font-bold">?</span> I like those.
-          </h3>
-          <h3>No pitch. Just say hi, or tell me what you're building</h3>
+          <p class="text-lg">
+            GOT SOMETHING INTERESTING?
+
+            <br /> Products, interfaces, weird frontend problems — I'm in.
+          </p>
         </div>
         <a
+          href="mailto:lilapapazian@gmail.com"
           class="text-[0.8em] uppercase cursor-pointer border-2 border-black
               bg-accent px-5 py-3 w-fit
               text-white
@@ -332,11 +361,26 @@ const experiences = [
               transition-[transform,box-shadow] duration-100
               hover:translate-x-[6px]
               hover:translate-y-[6px]
-              hover:shadow-none"
-          >EMAIL ME AT LILAPAPAZIAN@GMAIL.COM</a
+              hover:shadow-none
+              after:content-['_↗']
+              z-1"
+          >EMAIL ME</a
         >
       </section>
     </main>
-  </body>
-  <!-- <footer class="bg-accent text-white">LILA PAPAZIAN (C) 2026</footer> -->
+    <footer
+      class="flex items-center justify-between bg-accent px-6 py-3 text-[#1e1e1e] -mx-4 -mb-4 min-w-full"
+    >
+      <span class="text-xs text-white font-bold">© 2026 LILA PAPAZIAN</span>
+
+      <a
+        href="https://www.linkedin.com/in/lilapapazian/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs font-bold uppercase hover:opacity-60 text-white"
+      >
+        LINKEDIN ↗
+      </a>
+    </footer></body
+  >
 </html>
