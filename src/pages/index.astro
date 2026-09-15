@@ -71,7 +71,6 @@ const experiences = [
     technologies: ['React', 'TypeScript', 'React Query', 'Zustand', 'Jest', 'RTL'],
   },
 ];
-
 ---
 
 <!doctype html>
@@ -175,8 +174,8 @@ const experiences = [
           </h2>
         </div>
         <div class="flex flex-row gap-4 justify-center md:justify-start">
-          <a href="#work"
-          
+          <a
+            href="#work"
             class="text-[0.8em] uppercase cursor-pointer border-2 border-black
               bg-accent px-5 py-3
               text-white
@@ -187,7 +186,8 @@ const experiences = [
               hover:shadow-none"
             >View my work</a
           >
-          <a href="#reach-out"
+          <a
+            href="#reach-out"
             class="text-[0.8em] uppercase cursor-pointer border-2 border-accent
               px-5 py-3
               text-white
@@ -204,19 +204,18 @@ const experiences = [
         </div>
       </section>
       <section id="work" class="py-8 flex flex-col gap-12 border-b border-accent/25">
-        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
-          <div class="flex-1 flex flex-col align-center justify-center gap-8">
-            <div>
-              <span class="flex flex-row gap-1">
-                <h4 class="text-[0.8em] uppercase text-accent">[</h4>
-                <h4 class="text-[0.8em] uppercase">SELECTED WORK</h4>
-                <h4 class="text-[0.8em] uppercase text-accent">]</h4>
-              </span>
-              <h2 class="text-4xl uppercase font-bold">OPEN LIBRARY LENDING MODEL</h2>
-              <h3>Understanding what happens before clicking “BORROW”</h3>
-            </div>
-            <button
-              class="text-[0.8em] uppercase cursor-pointer border-2 border-accent
+        <div class="flex flex-col gap-8">
+          <div>
+            <h2 class="text-4xl uppercase font-bold">[ WORK EXPERIENCE ]</h2>
+          </div>
+          <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+            <div class="flex-1 flex flex-col align-center justify-center gap-8">
+              <div>
+                <h2 class="text-xl uppercase font-bold">CASE STUDY #1: OPEN LIBRARY LENDING MODEL</h2>
+                <h3>Understanding what happens before clicking “BORROW”</h3>
+              </div>
+              <button
+                class="text-[0.8em] uppercase cursor-pointer border-2 border-accent
               px-5 py-3
               text-white
               w-fit
@@ -228,51 +227,53 @@ const experiences = [
               hover:translate-x-[6px]
               hover:translate-y-[6px]
               hover:shadow-none"
-            >
-              Read full article
-            </button>
-            <Image
-              alt="Collage showing old library checkout cards overlapping with a digital screenshot of The Hobbit on the Open Library website, highlighting the transition from physical to digital borrowing."
-              src={booksCollageImg}
-            />
+              >
+                Read full article
+              </button>
+              <Image
+                alt="Collage showing old library checkout cards overlapping with a digital screenshot of The Hobbit on the Open Library website, highlighting the transition from physical to digital borrowing."
+                src={booksCollageImg}
+              />
+            </div>
+            <ol class="flex flex-1 flex-col gap-8 justify-evenly">
+              <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+                <span class="text-6xl text-accent font-bold">01.</span>
+                <div>
+                  <h2>THE PROBLEM</h2>
+                  <p>
+                    Loan duration unknown before clicking Borrow. Users make decisions without
+                    understanding conditions.
+                  </p>
+                </div>
+              </li>
+              <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+                <span class="text-6xl text-accent font-bold">02.</span>
+                <div>
+                  <h2>THE SOLUTION</h2>
+                  <p>
+                    Making loan conditions visible upfront. Clear labeling across all borrowing
+                    states.
+                  </p>
+                </div>
+              </li>
+              <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+                <span class="text-6xl text-accent font-bold">03.</span>
+                <div>
+                  <h2>THE VALIDATION</h2>
+                  <p class="pb-4">
+                    Early user interviews confirmed 80%+ could explain loan conditions before
+                    borrowing. Ready for implementation.
+                  </p>
+                </div>
+              </li>
+              <Image
+                alt="Content and state model diagram featuring four user need cards: 1. 'I want to read this now' backed by r/AskReddit; 2. 'I want to know if I can have it' backed by r/libgen and Github issue 1754; 3. 'I want to understand what I'm borrowing' based on direct observation and Github issue 10019; and 4. 'I want options if I can't have it now' based on multiple Github issues. Each card includes a direct user quote explaining their expectations or friction with the borrowing system."
+                src={contentStateModelImg}
+              />
+            </ol>
           </div>
-          <ol class="flex flex-1 flex-col gap-8 justify-evenly">
-            <li class="grid grid-cols-[auto_1fr] items-center gap-2">
-              <span class="text-6xl text-accent font-bold">01.</span>
-              <div>
-                <h2>THE PROBLEM</h2>
-                <p>
-                  Loan duration unknown before clicking Borrow. Users make decisions without
-                  understanding conditions.
-                </p>
-              </div>
-            </li>
-            <li class="grid grid-cols-[auto_1fr] items-center gap-2">
-              <span class="text-6xl text-accent font-bold">02.</span>
-              <div>
-                <h2>THE SOLUTION</h2>
-                <p>
-                  Making loan conditions visible upfront. Clear labeling across all borrowing
-                  states.
-                </p>
-              </div>
-            </li>
-            <li class="grid grid-cols-[auto_1fr] items-center gap-2">
-              <span class="text-6xl text-accent font-bold">03.</span>
-              <div>
-                <h2>THE VALIDATION</h2>
-                <p class="pb-4">
-                  Early user interviews confirmed 80%+ could explain loan conditions before
-                  borrowing. Ready for implementation.
-                </p>
-              </div>
-            </li>
-            <Image
-              alt="Content and state model diagram featuring four user need cards: 1. 'I want to read this now' backed by r/AskReddit; 2. 'I want to know if I can have it' backed by r/libgen and Github issue 1754; 3. 'I want to understand what I'm borrowing' based on direct observation and Github issue 10019; and 4. 'I want options if I can't have it now' based on multiple Github issues. Each card includes a direct user quote explaining their expectations or friction with the borrowing system."
-              src={contentStateModelImg}
-            />
-          </ol>
         </div>
+
         <!-- <figure class="diff aspect-16/9" tabindex="0">
           <div class="diff-item-1" role="img" tabindex="0">
             <Image alt="daisy" src={daisySource} />
@@ -314,11 +315,14 @@ const experiences = [
         </div>
       </section>
       <section id="reach-out" class="pt-8 flex flex-col gap-12">
-        <div>
-          <h2 class="text-4xl font-bold">
-            Got a problem nobody's defined yet <span class="text-accent">?</span> <br /> I like those.
-          </h2>
-          <span>No pitch. Just say hi, or tell me what you're building </span>
+        <div class="flex flex-col gap-4">
+          <div>
+            <h2 class="text-4xl uppercase font-bold">[ REACH OUT ]</h2>
+          </div>
+          <h3>
+            Got a problem nobody's defined yet<span class="text-accent font-bold">?</span> I like those.
+          </h3>
+          <h3>No pitch. Just say hi, or tell me what you're building</h3>
         </div>
         <a
           class="text-[0.8em] uppercase cursor-pointer border-2 border-black
