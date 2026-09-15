@@ -206,6 +206,9 @@ importers:
         specifier: ^5.6.3
         version: 5.9.3
     devDependencies:
+      daisyui:
+        specifier: ^5.7.37
+        version: 5.7.37
       prettier:
         specifier: ^3.9.6
         version: 3.9.6
@@ -1359,6 +1362,9 @@ packages:
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
+
+  daisyui@5.7.37:
+    resolution: {integrity: sha512-PVcdAcL0ni6/wmcNwvldARZuO0HdzxtjVEAT86ie9GMgFjwmqIWeXsPaM2/eYqLb4WMexqj146C5Z1xmzZDnjg==}
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -3843,6 +3849,8 @@ snapshots:
   cssesc@3.0.0: {}
 
   csstype@3.2.3: {}
+
+  daisyui@5.7.37: {}
 
   debug@4.4.3:
     dependencies:
