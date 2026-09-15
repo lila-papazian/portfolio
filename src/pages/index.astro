@@ -4,11 +4,6 @@ import '../styles/global.css';
 import booksCollageImg from '../assets/books-collage.png';
 import contentStateModelImg from '../assets/content-model.webp';
 import ExperienceCards from '../component/ExperienceCards.astro';
-import TechStack from '../component/TechStack.astro';
-import WhatImLookingFor from '../component/WhatImLookingFor.astro';
-const daisySource = 'https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.webp';
-const daisyBlurSource =
-  'https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a-blur.webp';
 
 const experiences = [
   {
@@ -77,19 +72,6 @@ const experiences = [
   },
 ];
 
-const primaryTech = ['React', 'Next.js', 'Astro'];
-const secondaryTech = [
-  'TypeScript',
-  'Node.js',
-  'Express',
-  'GraphQL',
-  'TanStack Query',
-  'Zustand',
-  'Jest',
-  'RTL',
-  'Storybook',
-  'Figma',
-];
 ---
 
 <!doctype html>
@@ -193,7 +175,8 @@ const secondaryTech = [
           </h2>
         </div>
         <div class="flex flex-row gap-4 justify-center md:justify-start">
-          <button
+          <a href="#work"
+          
             class="text-[0.8em] uppercase cursor-pointer border-2 border-black
               bg-accent px-5 py-3
               text-white
@@ -202,9 +185,9 @@ const secondaryTech = [
               hover:translate-x-[6px]
               hover:translate-y-[6px]
               hover:shadow-none"
-            >View my work</button
+            >View my work</a
           >
-          <button
+          <a href="#reach-out"
             class="text-[0.8em] uppercase cursor-pointer border-2 border-accent
               px-5 py-3
               text-white
@@ -217,7 +200,7 @@ const secondaryTech = [
               hover:shadow-none"
           >
             Reach out
-          </button>
+          </a>
         </div>
       </section>
       <section id="work" class="py-8 flex flex-col gap-12 border-b border-accent/25">
@@ -332,8 +315,8 @@ const secondaryTech = [
       </section>
       <section id="reach-out" class="pt-8 flex flex-col gap-12">
         <div>
-          <h2 class="text-4xl uppercase font-bold">
-            Got a problem nobody's defined yet? <br /> I like those.
+          <h2 class="text-4xl font-bold">
+            Got a problem nobody's defined yet <span class="text-accent">?</span> <br /> I like those.
           </h2>
           <span>No pitch. Just say hi, or tell me what you're building </span>
         </div>
@@ -351,5 +334,5 @@ const secondaryTech = [
       </section>
     </main>
   </body>
-  <footer class="bg-accent text-white">LILA PAPAZIAN (C) 2026</footer>
+  <!-- <footer class="bg-accent text-white">LILA PAPAZIAN (C) 2026</footer> -->
 </html>
