@@ -1,47 +1,37 @@
-# Astro Starter Kit: Minimal
+# Portfolio — Lila Papazian
 
-```sh
-npm create astro@latest -- --template minimal
+Retro-inspired personal site built with Astro.
+
+## Overview
+
+A single-page portfolio focused on performance, clarity, and personality — combining a 90’s game aesthetic with modern frontend practices.
+
+## Stack
+
+- Astro
+- TypeScript
+- NES.css
+- Custom CSS
+
+## Key Decisions
+
+- **Astro over heavier frameworks** to prioritize performance and minimal JS
+- **Content separated from UI** (e.g. `stack.ts`) for maintainability
+- **Intentional simplicity** — avoiding over-engineering for a small, focused project
+
+## Notes
+
+This project is designed to be lightweight and expressive rather than feature-heavy.  
+The goal is to showcase frontend craftsmanship, UX thinking, and clear technical decisions.
+
+## Running locally
+
+```bash
+npm install
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## Future Improvements
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Expand project section with case studies
+- Add more interactive elements to the UI
