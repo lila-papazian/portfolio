@@ -1,9 +1,99 @@
 ---
-import "../styles/global.css";
+import { Image } from 'astro:assets';
+import '../styles/global.css';
+import booksCollageImg from '../assets/books-collage.png';
+import contentStateModelImg from '../assets/content-model.webp';
+import ExperienceCards from '../component/ExperienceCards.astro';
+import TechStack from '../component/TechStack.astro';
+import WhatImLookingFor from '../component/WhatImLookingFor.astro';
+const daisySource = 'https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.webp';
+const daisyBlurSource =
+  'https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a-blur.webp';
+
+const experiences = [
+  {
+    company: 'DESPEGAR',
+    period: '2018 – 2021',
+    role: 'Junior → Mid-Level Frontend',
+    subtitle: 'Learned at scale. Shipped structural changes. Direct business impact.',
+    highlights: [
+      {
+        title: 'Legacy Migration',
+        description: 'AngularJS → React 16 + TypeScript. Maintained production stability.',
+      },
+      {
+        title: 'RBAC Systems',
+        description: 'Complex permission logic. Customer-facing interfaces.',
+      },
+      {
+        title: 'Business Impact',
+        description: 'Self-service booking UI. Reduced support tickets. Improved CSAT.',
+      },
+    ],
+    technologies: ['React', 'TypeScript', 'AngularJS', 'Design System', 'RBAC'],
+  },
+  {
+    company: 'BLUE ALBA',
+    period: '2021 – 2024',
+    role: 'Full-Stack Engineer',
+    subtitle: 'Small squads across 2 clients. Prevented blockers. Built infrastructure.',
+    highlights: [
+      {
+        title: 'TanStack Query Leadership',
+        description: 'Led adoption. Organized workshop. 30% TTI improvement.',
+      },
+      {
+        title: 'Full-Stack Ownership',
+        description: 'Node.js/Express, GraphQL mutations, database queries. Prevented blockers.',
+      },
+      {
+        title: 'Component System',
+        description: 'Storybook documentation. Reusable across 2 client projects.',
+      },
+    ],
+    technologies: ['React', 'Node.js', 'Express', 'GraphQL', 'TanStack Query', 'Storybook'],
+  },
+  {
+    company: 'GLOBANT',
+    period: '2024 – PRESENT',
+    role: 'Senior Frontend Engineer',
+    subtitle: 'Led architectural decisions. Mentored engineers. Navigated ambiguity with product.',
+    highlights: [
+      {
+        title: 'Fake DDoS',
+        description:
+          'Debugged Redux race condition. Surgical React Query migration: 30% fewer API calls, 1.2s faster load.',
+      },
+      {
+        title: 'Form Architecture',
+        description: 'Redux → Zustand. 80% fewer stale-state bugs. Jest/RTL test suite.',
+      },
+      {
+        title: 'Product Thinking',
+        description: 'Co-designed assignment logic with PM. Zero rework on code review.',
+      },
+    ],
+    technologies: ['React', 'TypeScript', 'React Query', 'Zustand', 'Jest', 'RTL'],
+  },
+];
+
+const primaryTech = ['React', 'Next.js', 'Astro'];
+const secondaryTech = [
+  'TypeScript',
+  'Node.js',
+  'Express',
+  'GraphQL',
+  'TanStack Query',
+  'Zustand',
+  'Jest',
+  'RTL',
+  'Storybook',
+  'Figma',
+];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -29,10 +119,7 @@ import "../styles/global.css";
       property="og:description"
       content="Frontend-rooted Product Engineer focused on UX, product thinking, and craft."
     />
-    <meta
-      property="og:image"
-      content="https://lilapapazian.dev/assets/og-image.png"
-    />
+    <meta property="og:image" content="https://lilapapazian.dev/assets/og-image.png" />
 
     <link rel="canonical" href="https://lilapapazian.dev/" />
 
@@ -43,28 +130,18 @@ import "../styles/global.css";
         "name": "Lila Papazian",
         "url": "https://lilapapazian.dev/",
         "jobTitle": "Product Engineer",
-        "sameAs": [
-          "https://github.com/lila-papazian",
-          "https://www.linkedin.com/in/lila-papazian/"
-        ]
+        "sameAs": ["https://github.com/lila-papazian", "https://www.linkedin.com/in/lila-papazian/"]
       }
     </script>
   </head>
   <body class="bg-dark text-white min-h-svh p-4 flex flex-col gap-4">
-    <header
-      id="navbar"
-      class="inset-x-0 top-0 z-50 px-4
-    transition-all duration-500 ease-out"
-    >
-      <nav class="flex items-center justify-between px-6 py-4">
-        <a href="/" id="nav-name" class="font-sentient font-bold text-xl">
-          LILA PAPAZIAN
-        </a>
-
-        <ul id="nav-links" class="flex flex-row justify-end gap-4">
+    <header id="navbar" class="inset-x-0 top-0 z-50 px-4
+    transition-all duration-500 ease-out">
+      <nav class="flex items-center justify-end px-6 py-4">
+        <ul id="nav-links" class="flex flex-row justify-end gap-4 opacity-100 translate-y-0">
           <li>
             <a
-              href="#"
+              href="#work"
               class="underline-offset-4 decoration-2 decoration-accent hover:underline"
             >
               work
@@ -73,7 +150,7 @@ import "../styles/global.css";
 
           <li>
             <a
-              href="#"
+              href="#experience"
               class="underline-offset-4 decoration-2 decoration-accent hover:underline"
             >
               experience
@@ -82,7 +159,16 @@ import "../styles/global.css";
 
           <li>
             <a
-              href="#"
+              href="#about"
+              class="underline-offset-4 decoration-2 decoration-accent hover:underline"
+            >
+              about me
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#reach-out"
               class="underline-offset-4 decoration-2 decoration-accent hover:underline after:content-['_↗'] hover:after:text-accent"
             >
               reach out
@@ -92,16 +178,18 @@ import "../styles/global.css";
       </nav>
     </header>
     <main class="flex-1 flex flex-col gap-4">
-      <section
-        id="hero"
-        class="flex flex-col pb-8 justify-center gap-8 border-b border-accent/25"
-      >
+      <section id="hero" class="flex flex-col py-8 justify-center gap-8 border-b border-accent/25">
         <div>
+          <h3 class="text-[0.8em] uppercase">
+            React <span class="text-accent font-bold">·</span> TypeScript <span
+              class="text-accent font-bold">·</span
+            > UX craft
+          </h3>
           <h1 class="font-sentient text-8xl font-bold">LILA PAPAZIAN</h1>
 
           <h2>
-            Senior Frontend Engineer — product thinking, architectural
-            decisions, shipped at scale
+            Product Frontend Engineer — product thinking, technical decisions, building for real
+            users
           </h2>
         </div>
         <div class="flex flex-row gap-4 justify-center md:justify-start">
@@ -132,86 +220,136 @@ import "../styles/global.css";
           </button>
         </div>
       </section>
+      <section id="work" class="py-8 flex flex-col gap-12 border-b border-accent/25">
+        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+          <div class="flex-1 flex flex-col align-center justify-center gap-8">
+            <div>
+              <span class="flex flex-row gap-1">
+                <h4 class="text-[0.8em] uppercase text-accent">[</h4>
+                <h4 class="text-[0.8em] uppercase">SELECTED WORK</h4>
+                <h4 class="text-[0.8em] uppercase text-accent">]</h4>
+              </span>
+              <h2 class="text-4xl uppercase font-bold">OPEN LIBRARY LENDING MODEL</h2>
+              <h3>Understanding what happens before clicking “BORROW”</h3>
+            </div>
+            <button
+              class="text-[0.8em] uppercase cursor-pointer border-2 border-accent
+              px-5 py-3
+              text-white
+              w-fit
+              mb-8
+              hover:bg-accent
+              hover:border-black
+              hover:text-white shadow-[6px_6px_0_#000]
+              transition-[transform,box-shadow] duration-100
+              hover:translate-x-[6px]
+              hover:translate-y-[6px]
+              hover:shadow-none"
+            >
+              Read full article
+            </button>
+            <Image
+              alt="Collage showing old library checkout cards overlapping with a digital screenshot of The Hobbit on the Open Library website, highlighting the transition from physical to digital borrowing."
+              src={booksCollageImg}
+            />
+          </div>
+          <ol class="flex flex-1 flex-col gap-8 justify-evenly">
+            <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+              <span class="text-6xl text-accent font-bold">01.</span>
+              <div>
+                <h2>THE PROBLEM</h2>
+                <p>
+                  Loan duration unknown before clicking Borrow. Users make decisions without
+                  understanding conditions.
+                </p>
+              </div>
+            </li>
+            <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+              <span class="text-6xl text-accent font-bold">02.</span>
+              <div>
+                <h2>THE SOLUTION</h2>
+                <p>
+                  Making loan conditions visible upfront. Clear labeling across all borrowing
+                  states.
+                </p>
+              </div>
+            </li>
+            <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+              <span class="text-6xl text-accent font-bold">03.</span>
+              <div>
+                <h2>THE VALIDATION</h2>
+                <p class="pb-4">
+                  Early user interviews confirmed 80%+ could explain loan conditions before
+                  borrowing. Ready for implementation.
+                </p>
+              </div>
+            </li>
+            <Image
+              alt="Content and state model diagram featuring four user need cards: 1. 'I want to read this now' backed by r/AskReddit; 2. 'I want to know if I can have it' backed by r/libgen and Github issue 1754; 3. 'I want to understand what I'm borrowing' based on direct observation and Github issue 10019; and 4. 'I want options if I can't have it now' based on multiple Github issues. Each card includes a direct user quote explaining their expectations or friction with the borrowing system."
+              src={contentStateModelImg}
+            />
+          </ol>
+        </div>
+        <!-- <figure class="diff aspect-16/9" tabindex="0">
+          <div class="diff-item-1" role="img" tabindex="0">
+            <Image alt="daisy" src={daisySource} />
+          </div>
+          <div class="diff-item-2" role="img">
+            <Image alt="daisy blur" src={daisyBlurSource} />
+          </div>
+          <div class="diff-resizer"></div>
+        </figure> -->
+      </section>
+      <section id="experience" class="py-8 flex flex-col gap-12 border-b border-accent/25">
+        <div class="flex flex-col gap-4 md:gap-8">
+          <div>
+            <h2 class="text-4xl uppercase font-bold">[ WORK EXPERIENCE ]</h2>
+          </div>
+          <ExperienceCards experiences={experiences} />
+        </div>
+      </section>
+      <section id="about" class="py-8 flex flex-col gap-12 border-b border-accent/25">
+        <div>
+          <h2 class="text-4xl uppercase font-bold">[ ABOUT ME ]</h2>
+        </div>
+        <div class="grid grid-cols-3 grid-rows-2 gap-x-8 gap-y-12">
+          <div>
+            <div class="uppercase font-bold text-accent">Role</div>
+            <ul>
+              <li>Senior Frontend Engineer</li>
+              <li>Product Engineer</li>
+            </ul>
+          </div>
+          <div>
+            <div class="uppercase font-bold text-accent">Location</div>
+            <ul>
+              <li>Argentina</li>
+              <li>Remote First</li>
+              <li>Open to relocation</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="reach-out" class="pt-8 flex flex-col gap-12">
+        <div>
+          <h2 class="text-4xl uppercase font-bold">
+            Got a problem nobody's defined yet? <br /> I like those.
+          </h2>
+          <span>No pitch. Just say hi, or tell me what you're building </span>
+        </div>
+        <a
+          class="text-[0.8em] uppercase cursor-pointer border-2 border-black
+              bg-accent px-5 py-3 w-fit
+              text-white
+              shadow-[6px_6px_0_#000]
+              transition-[transform,box-shadow] duration-100
+              hover:translate-x-[6px]
+              hover:translate-y-[6px]
+              hover:shadow-none"
+          >EMAIL ME AT LILAPAPAZIAN@GMAIL.COM</a
+        >
+      </section>
     </main>
-    <footer>footer</footer>
-    <script is:inline>
-      const navbar = document.querySelector("#navbar");
-      const navName = document.querySelector("#nav-name");
-      const navLinks = document.querySelector("#nav-links");
-      const hero = document.querySelector("#hero");
-
-      if (navbar && navName && navLinks && hero) {
-        const desktopQuery = window.matchMedia("(min-width: 768px)");
-
-        const setNavbarState = (heroFinished) => {
-          const isDesktop = desktopQuery.matches;
-
-          // Desktop: navbar becomes fixed after the hero.
-          navbar.classList.toggle("fixed", heroFinished && isDesktop);
-          navbar.classList.toggle("top-0", heroFinished && isDesktop);
-
-          if (heroFinished) {
-            // Animate both elements in.
-            navName.classList.remove("opacity-0", "translate-y-2");
-            navName.classList.add(
-              "opacity-100",
-              "translate-y-0",
-              "transition-[opacity,transform]",
-              "duration-700",
-              "ease-out",
-            );
-
-            navLinks.classList.remove("opacity-0", "translate-y-2");
-            navLinks.classList.add(
-              "opacity-100",
-              "translate-y-0",
-              "transition-[opacity,transform]",
-              "duration-700",
-              "delay-75",
-              "ease-out",
-            );
-          } else {
-            // Return to the initial state.
-            navName.classList.remove("opacity-100", "translate-y-0");
-            navName.classList.add("opacity-0", "translate-y-2");
-
-            navLinks.classList.remove("opacity-100", "translate-y-0");
-            navLinks.classList.add("opacity-0", "translate-y-2");
-          }
-        };
-
-        // Initial state: visible while the hero is on screen.
-        navName.classList.add(
-          "transition-[opacity,transform]",
-          "duration-700",
-          "ease-out",
-        );
-
-        navLinks.classList.add(
-          "transition-[opacity,transform]",
-          "duration-700",
-          "ease-out",
-        );
-
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            const heroFinished =
-              !entry.isIntersecting && entry.boundingClientRect.bottom <= 0;
-
-            setNavbarState(heroFinished);
-          },
-          {
-            threshold: 0,
-          },
-        );
-
-        observer.observe(hero);
-
-        desktopQuery.addEventListener("change", () => {
-          observer.unobserve(hero);
-          observer.observe(hero);
-        });
-      }
-    </script>
   </body>
+  <footer class="bg-accent text-white">LILA PAPAZIAN (C) 2026</footer>
 </html>

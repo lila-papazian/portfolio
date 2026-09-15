@@ -1,0 +1,32 @@
+---
+interface Props {
+  primary: string[];
+  secondary: string[];
+}
+
+const { primary, secondary } = Astro.props;
+---
+
+<section class="border-b-2 border-white/10 py-16 px-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="section-title">Tech & Tools</div>
+
+    <div class="mb-8">
+      <p class="text-xs text-white/60 uppercase font-bold tracking-widest mb-4">Primary</p>
+      <div class="flex flex-wrap gap-2">
+        {primary.map((tech) => (
+          <span class="tech-badge tech-badge-primary">{tech}</span>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <p class="text-xs text-white/60 uppercase font-bold tracking-widest mb-4">Full Stack</p>
+      <div class="flex flex-wrap gap-2">
+        {secondary.map((tech) => (
+          <span class="tech-badge">{tech}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

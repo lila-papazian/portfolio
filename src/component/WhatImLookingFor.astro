@@ -1,0 +1,62 @@
+---
+interface Props {
+  role?: string;
+  roleDescription?: string;
+  location?: string;
+  locationDescription?: string;
+  values?: string[];
+}
+
+const {
+  role = 'Product Engineer at early-stage startups (Seed through Series B)',
+  roleDescription = 'Where engineering has a voice in product decisions, not just executing specs',
+  location = 'Based in Buenos Aires — open to remote-first or visa sponsorship for relocation',
+  locationDescription = 'Timezone flexible, but prefer async-friendly teams',
+  values = [
+    'Influence shipping decisions from day one',
+    'Work with a small, high-context team',
+    'Build product from 0 or early stage',
+    'Pragmatism over perfection',
+  ],
+} = Astro.props;
+---
+<div class="max-w-2xl mx-auto">
+  <div class="space-y-6">
+    <!-- Role Card -->
+    <div class="card bg-transparent border-2 border-accent rounded-none shadow-none">
+      <div class="card-body p-6">
+        <h3 class="m-0 text-lg font-bold text-white mb-3">Role</h3>
+        <p class="text-base text-white/85 mb-2">{role}</p>
+        <p class="text-sm text-white/70">{roleDescription}</p>
+      </div>
+    </div>
+
+    <!-- Location Card -->
+    <div class="card bg-transparent border-2 border-accent rounded-none shadow-none">
+      <div class="card-body p-6">
+        <h3 class="m-0 text-lg font-bold text-white mb-3">Location & Work</h3>
+        <p class="text-base text-white/85 mb-2">{location}</p>
+        <p class="text-sm text-white/70">{locationDescription}</p>
+      </div>
+    </div>
+
+    <!-- What Matters Card -->
+    <div class="card bg-transparent border-2 border-accent rounded-none shadow-none">
+      <div class="card-body p-6">
+        <h3 class="m-0 text-lg font-bold text-white mb-4">What matters</h3>
+        <ul class="space-y-3" role="list">
+          {
+            values.map((value) => (
+              <li class="text-base text-white/85 flex gap-3" role="listitem">
+                <span class="text-accent font-bold flex-shrink-0" aria-hidden="true">
+                  →
+                </span>
+                <span>{value}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
