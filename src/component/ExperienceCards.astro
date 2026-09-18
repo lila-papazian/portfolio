@@ -21,7 +21,7 @@ const { experiences } = Astro.props;
 ---
 
 <section role="region" aria-label="Work experience">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="flex flex-col-reverse gap-6 md:grid md:grid-cols-3">
       {experiences.map((exp) => (
         <div class="card bg-transparent border-2 border-accent rounded-none shadow-none hover:border-accent-light hover:shadow-none transition-all duration-150 hover:translate-y-[-2px]">
           <div class="card-header bg-orange-500/10 border-b-2 border-accent px-6 py-4 flex justify-between items-start rounded-none">
