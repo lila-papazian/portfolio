@@ -116,34 +116,32 @@ const experiences = [
     </script>
   </head>
   <body class="bg-dark text-white min-h-svh p-4 flex flex-col gap-4">
-    <header id="navbar" class="inset-x-0 top-0 z-50 px-4
+    <header class="inset-x-0 top-0 z-50 px-4
     transition-all duration-500 ease-out">
-      <nav class="flex items-center justify-end px-6 py-4">
+      <nav id="navbar" class="flex items-center justify-end px-6 py-4">
         <ul id="nav-links" class="flex flex-row justify-end gap-4 opacity-100 translate-y-0">
-          <!-- <li>
+          <li>
             <a
               href="#work"
               class="underline-offset-4 decoration-2 decoration-accent hover:underline"
             >
-              work
-            </a>
-          </li> -->
-
-          <li>
-            <a
-              href="#experience"
-              class="underline-offset-4 decoration-2 decoration-accent hover:underline"
-            >
-              experience
+              selected work
             </a>
           </li>
-
           <li>
             <a
               href="#about"
               class="underline-offset-4 decoration-2 decoration-accent hover:underline"
             >
               about me
+            </a>
+          </li>
+          <li>
+            <a
+              href="#experience"
+              class="underline-offset-4 decoration-2 decoration-accent hover:underline"
+            >
+              experience
             </a>
           </li>
 
@@ -168,8 +166,8 @@ const experiences = [
           </h3>
           <h1 class="font-sentient text-[clamp(3.5rem,12vw,6rem)] font-bold">LILA PAPAZIAN</h1>
 
-          <h2 class="text-xl">Senior Frontend Engineer</h2>
-          <h2 class="text-xl">Product thinking, technical decisions, building for real users.</h2>
+          <p class="text-xl">Senior Frontend Engineer</p>
+          <p class="text-xl">Product thinking, technical decisions, building for real users.</p>
         </div>
         <div class="flex flex-row gap-4 justify-center md:justify-start">
           <a
@@ -182,7 +180,7 @@ const experiences = [
               hover:translate-x-[6px]
               hover:translate-y-[6px]
               hover:shadow-none"
-            >View my journey</a
+            >See recent work</a
           >
           <a
             href="#reach-out"
@@ -198,11 +196,11 @@ const experiences = [
               hover:shadow-none
               after:content-['_↗']"
           >
-            Reach out
+            Let's build something
           </a>
         </div>
       </section>
-      <!-- <section id="work" class="py-8 flex flex-col gap-12">
+      <section id="work" class="py-8 flex flex-col gap-12" role="region" aria-label="Selected work">
         <div class="flex flex-col gap-8">
           <div>
             <h2 class="text-4xl uppercase font-bold">[ SELECTED WORK ]</h2>
@@ -213,7 +211,8 @@ const experiences = [
                 <h2 class="text-xl uppercase font-bold">OPEN LIBRARY LENDING MODEL</h2>
                 <h3>Understanding what happens before clicking “BORROW”</h3>
               </div>
-              <a href=""
+              <a
+                href="https://lilapapazian.hashnode.dev/case-study-1-rethinking-open-library-s-borrowing-experience"
                 class="text-[0.8em] uppercase cursor-pointer border-2 border-accent
               px-5 py-3
               text-white
@@ -234,7 +233,7 @@ const experiences = [
                 src={booksCollageImg}
               />
             </div>
-            <ol class="flex flex-1 flex-col gap-8 justify-evenly">
+            <ul class="flex flex-1 flex-col gap-8 justify-evenly">
               <li class="grid grid-cols-[auto_1fr] items-center gap-2">
                 <span class="text-6xl text-accent font-bold">01.</span>
                 <div>
@@ -269,14 +268,17 @@ const experiences = [
                 alt="Content and state model diagram featuring four user need cards: 1. 'I want to read this now' backed by r/AskReddit; 2. 'I want to know if I can have it' backed by r/libgen and Github issue 1754; 3. 'I want to understand what I'm borrowing' based on direct observation and Github issue 10019; and 4. 'I want options if I can't have it now' based on multiple Github issues. Each card includes a direct user quote explaining their expectations or friction with the borrowing system."
                 src={contentStateModelImg}
               />
-            </ol>
+            </ul>
           </div>
         </div>
+      </section>
 
-       
-      </section>  -->
-
-      <section id="about" class="relative overflow-hidden py-12 flex flex-col gap-12">
+      <section
+        id="about"
+        class="relative overflow-hidden py-12 flex flex-col gap-12"
+        role="region"
+        aria-label="About me"
+      >
         <!-- Decorative UTN blueprint -->
         <img
           src="/utn-map.webp"
@@ -325,7 +327,13 @@ const experiences = [
           </div>
         </div>
       </section>
-      <section id="experience" class="py-8 flex flex-col gap-12">
+
+      <section
+        id="experience"
+        class="py-8 flex flex-col gap-12"
+        role="region"
+        aria-label="Work experience"
+      >
         <div class="flex flex-col gap-4 md:gap-8">
           <div>
             <h2 class="text-4xl uppercase font-bold">[ EXPERIENCE ]</h2>
