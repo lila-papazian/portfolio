@@ -9,7 +9,7 @@ const experiences = [
   {
     company: 'DESPEGAR',
     period: '2018 – 2021',
-    role: 'Junior → Mid-Level Frontend',
+    role: 'Frontend Engineer',
     subtitle: 'Learned at scale. Shipped structural changes. Direct business impact.',
     highlights: [
       {
@@ -30,7 +30,7 @@ const experiences = [
   {
     company: 'BLUE ALBA',
     period: '2021 – 2024',
-    role: 'Full-Stack Engineer',
+    role: 'Senior Frontend Engineer',
     subtitle: 'Small squads across 2 clients. Prevented blockers. Built infrastructure.',
     highlights: [
       {
@@ -57,7 +57,7 @@ const experiences = [
       {
         title: 'Fake DDoS',
         description:
-          'Debugged Redux race condition. Surgical React Query migration: 30% fewer API calls, 1.2s faster load.',
+          'Debugged Redux race condition. Surgical Tanstack Query migration: 30% fewer API calls, 1.2s faster load.',
       },
       {
         title: 'Form Architecture',
@@ -68,7 +68,7 @@ const experiences = [
         description: 'Co-designed assignment logic with PM. Zero rework on code review.',
       },
     ],
-    technologies: ['React', 'TypeScript', 'React Query', 'Zustand', 'Jest', 'RTL'],
+    technologies: ['React', 'TypeScript', 'Tanstack Query', 'Zustand', 'Jest', 'RTL'],
   },
 ];
 ---
@@ -151,7 +151,7 @@ const experiences = [
               rel="noopener noreferrer"
               class="underline-offset-4 decoration-2 decoration-accent
            transition-[text-decoration-color,color,opacity] duration-150 ease-out
-           hover:underline after:content-['_↗']"
+           hover:underline after:content-['_↗'] hover:after:text-accent"
             >
               cv
             </a>
@@ -244,42 +244,44 @@ const experiences = [
                 src={booksCollageImg}
               />
             </div>
-            <ul class="flex flex-1 flex-col gap-8 justify-evenly">
-              <li class="grid grid-cols-[auto_1fr] items-center gap-2">
-                <span class="text-6xl text-accent font-bold">01.</span>
-                <div>
-                  <h2>THE PROBLEM</h2>
-                  <p>
-                    Loan duration unknown before clicking Borrow. Users make decisions without
-                    understanding conditions.
-                  </p>
-                </div>
-              </li>
-              <li class="grid grid-cols-[auto_1fr] items-center gap-2">
-                <span class="text-6xl text-accent font-bold">02.</span>
-                <div>
-                  <h2>THE SOLUTION</h2>
-                  <p>
-                    Making loan conditions visible upfront. Clear labeling across all borrowing
-                    states.
-                  </p>
-                </div>
-              </li>
-              <li class="grid grid-cols-[auto_1fr] items-center gap-2">
-                <span class="text-6xl text-accent font-bold">03.</span>
-                <div>
-                  <h2>THE VALIDATION</h2>
-                  <p class="pb-4">
-                    Early user interviews confirmed 80%+ could explain loan conditions before
-                    borrowing. Ready for implementation.
-                  </p>
-                </div>
-              </li>
+            <div class="flex flex-1 flex-col">
+              <ul class="flex flex-1 flex-col gap-8 justify-evenly">
+                <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+                  <span class="text-6xl text-accent font-bold">01.</span>
+                  <div>
+                    <h2>THE PROBLEM</h2>
+                    <p>
+                      Loan duration unknown before clicking Borrow. Users make decisions without
+                      understanding conditions.
+                    </p>
+                  </div>
+                </li>
+                <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+                  <span class="text-6xl text-accent font-bold">02.</span>
+                  <div>
+                    <h2>THE SOLUTION</h2>
+                    <p>
+                      Making loan conditions visible upfront. Clear labeling across all borrowing
+                      states.
+                    </p>
+                  </div>
+                </li>
+                <li class="grid grid-cols-[auto_1fr] items-center gap-2">
+                  <span class="text-6xl text-accent font-bold">03.</span>
+                  <div>
+                    <h2>THE VALIDATION</h2>
+                    <p class="pb-4">
+                      Early user interviews confirmed 80%+ could explain loan conditions before
+                      borrowing. Ready for implementation.
+                    </p>
+                  </div>
+                </li>
+              </ul>
               <Image
                 alt="Content and state model diagram featuring four user need cards: 1. 'I want to read this now' backed by r/AskReddit; 2. 'I want to know if I can have it' backed by r/libgen and Github issue 1754; 3. 'I want to understand what I'm borrowing' based on direct observation and Github issue 10019; and 4. 'I want options if I can't have it now' based on multiple Github issues. Each card includes a direct user quote explaining their expectations or friction with the borrowing system."
                 src={contentStateModelImg}
               />
-            </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -364,7 +366,7 @@ const experiences = [
             <br /> Products, interfaces, weird frontend problems — I'm in.
           </p>
         </div>
-        <div>
+        <div class="flex flex-row gap-4 justify-center md:justify-start">
           <a
             href="mailto:lilapapazian@gmail.com"
             class="text-[0.8em] uppercase cursor-pointer border-2 border-black
@@ -383,9 +385,16 @@ const experiences = [
             href="/lila-papazian-frontend-engineer-cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-press text-[0.8em] uppercase cursor-pointer border-2 border-accent
-           px-5 py-3 text-white shadow-[6px_6px_0_#000]
-           hover:bg-accent hover:border-black hover:text-white
+            class="text-[0.8em] uppercase cursor-pointer border-2 border-accent
+              px-5 py-3
+              text-white
+              hover:bg-accent
+              hover:border-black
+              hover:text-white shadow-[6px_6px_0_#000]
+              transition-[transform,box-shadow] duration-100
+              hover:translate-x-[6px]
+              hover:translate-y-[6px]
+              hover:shadow-none
            after:content-['_↓']"
           >
             DOWNLOAD CV
