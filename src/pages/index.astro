@@ -4,6 +4,7 @@ import '../styles/global.css';
 import booksCollageImg from '../assets/books-collage.png';
 import contentStateModelImg from '../assets/content-model.webp';
 import ExperienceCards from '../component/ExperienceCards.astro';
+import Analytics from '@vercel/analytics/astro';
 
 const experiences = [
   {
@@ -114,6 +115,7 @@ const experiences = [
         "sameAs": ["https://github.com/lila-papazian", "https://www.linkedin.com/in/lila-papazian/"]
       }
     </script>
+    <Analytics />
   </head>
   <body class="bg-dark text-white min-h-svh p-4 flex flex-col gap-4">
     <header class="inset-x-0 top-0 z-50 px-4
